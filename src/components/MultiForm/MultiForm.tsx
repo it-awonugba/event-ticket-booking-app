@@ -9,6 +9,9 @@ import {
   SelectValue,
 } from "../ui/select";
 import { TicketData } from "@/App";
+import ImageUploader from "../ImageUploader/ImageUploader";
+import { Label } from "../ui/label";
+import { Input } from "../ui/input";
 
 interface FormProperties {
   tickets: TicketData[];
@@ -23,7 +26,6 @@ export default function MultiForm({
   progress,
   handleTicketClick,
 }: FormProperties) {
-  console.log(progress);
   return (
     <>
       {progress === 1 && (
@@ -105,7 +107,23 @@ export default function MultiForm({
       )}
       {progress === 2 && (
         <>
-          <section>Second form</section>
+          <ImageUploader />
+          <section>
+            <div className="border-none h-1 bg-divider-background"></div>
+          </section>
+          <section className="flex flex-col gap-2">
+            <Label
+              htmlFor="name"
+              className="text-base font-secondary font-normal"
+            >
+              Enter your name
+            </Label>
+            <Input
+              id="name"
+              type="text"
+              className="rounded-[0.75rem] border border-divider-background h-12"
+            />
+          </section>
         </>
       )}
     </>
