@@ -52,7 +52,10 @@ function App() {
               Step {progress}/{tickets.length}
             </span>
           </div>
-          <Progress value={33.33} className="w-full h-1" />
+          <Progress
+            value={(progress / tickets.length) * 100}
+            className="w-full h-1"
+          />
         </section>
 
         <section className="flex flex-col gap-8 p-0 bg-layer-background xl:p-6 xl:border xl:border-ring xl:rounded-lg">
