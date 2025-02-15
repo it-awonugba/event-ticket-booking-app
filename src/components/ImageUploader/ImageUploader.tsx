@@ -39,7 +39,7 @@ export default function ImageUploader() {
   };
 
   return (
-    <section className="flex flex-col gap-8 p-6 bg-card border border-progress-background bg-section-background rounded-md">
+    <section className="flex flex-col gap-8 p-6 bg-card border border-progress-background bg-section-background rounded-md xl:pb-12">
       <Label className="text-base font-secondary font-normal">
         Upload Profile Photo
       </Label>

@@ -161,7 +161,7 @@ export default function MultiForm({
 
       {progress === 3 && (
         <>
-          <section>
+          <section className="">
             <div className="text-center">
               <h1 className="font-ticket font-normal text-[2rem]">
                 Your Ticket is Booked!
@@ -169,6 +169,9 @@ export default function MultiForm({
               <p className="font-secondary text-base font-bold">
                 Check your email for a copy or you can download
               </p>
+            </div>
+            <div className="w-[18.75rem] h-[37.5rem] bg-[url('./subtract.svg')] mx-auto p-5">
+              <div className="w-[16.25rem] h-[27.875rem] border border-progress-foreground"></div>
             </div>
           </section>
         </>
