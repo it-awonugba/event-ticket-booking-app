@@ -69,7 +69,7 @@ export default function MultiForm({
                 <div className="border border-divider-background bg-section-background p-4 rounded-md">
                   <RadioGroup
                     defaultValue="1"
-                    className="grid grid-cols-1 xl:grid-cols-3 gap-6 p-0 w-full"
+                    className="grid grid-cols-1 xl:grid-cols-3 p-0 w-full"
                   >
                     {tickets.map((ticket) => (
                       <Ticket
@@ -87,7 +87,7 @@ export default function MultiForm({
                 Number of Tickets:
               </div>
               <Select>
-                <SelectTrigger className="w-full border border-divider-background rounded-[0.75rem] px-3 py-5">
+                <SelectTrigger className="w-full border border-divider-background rounded-[0.75rem] p-3">
                   <SelectValue
                     placeholder="1"
                     className="font-secondary text-base"
@@ -159,7 +159,20 @@ export default function MultiForm({
         </>
       )}
 
-      {progress === 3 && <></>}
+      {progress === 3 && (
+        <>
+          <section>
+            <div className="text-center">
+              <h1 className="font-ticket font-normal text-[2rem]">
+                Your Ticket is Booked!
+              </h1>
+              <p className="font-secondary text-base font-bold">
+                Check your email for a copy or you can download
+              </p>
+            </div>
+          </section>
+        </>
+      )}
     </>
   );
 }

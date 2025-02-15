@@ -5,7 +5,7 @@ import { NavLink } from "react-router";
 
 export default function Header() {
   return (
-    <header className="bg-[rgba(5,37,44,0.40)] flex items-center justify-between backdrop-blur-sm w-full border rounded-lg py-3 px-4 xl:w-[75rem] xl:mx-auto">
+    <header className="bg-[rgba(5,37,44,0.40)] flex items-center justify-between backdrop-blur-sm w-full border rounded-lg py-3 px-4 fixed z-50 xl:w-[75rem] xl:mx-auto left-1/2 transform -translate-x-1/2">
       <NavLink to="/">
         <img src={logo} alt="logo" />
       </NavLink>

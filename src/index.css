@@ -79,6 +79,7 @@
   --font-primary: "JejuMyeongjo-Regular";
   --font-secondary: "Roboto", "serif";
   --font-auxilliary: "Road Rage", "serif";
+  --font-ticket: "Alatsi", "serif";
 }
 
 @layer base {

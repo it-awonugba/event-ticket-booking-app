@@ -42,7 +42,7 @@ function App() {
   return (
     <main className="flex flex-col w-screen py-3 px-5 gap-y-5 overflow-hidden xl:gap-y-12">
       <Header />
-      <section className="flex flex-col w-full p-6 rounded-xl mx-auto bg-layer-background border border-ring gap-8 xl:p-12 xl:w-[43.75rem] xl:bg-card xl:p-12">
+      <section className="flex flex-col w-full p-6 rounded-xl mx-auto mt-28 bg-layer-background border border-ring gap-8 xl:p-12 xl:w-[43.75rem] xl:bg-card xl:p-12">
         <section className="flex flex-col gap-y-3">
           <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between">
             <span className="text-2xl font-normal font-primary xl:text-[2rem]">
