@@ -161,8 +161,8 @@ export default function MultiForm({
 
       {progress === 3 && (
         <>
-          <section className="">
-            <div className="text-center">
+          <section className="flex flex-col gap-8">
+            <div className="text-center flex flex-col gap-4">
               <h1 className="font-ticket font-normal text-[2rem]">
                 Your Ticket is Booked!
               </h1>
@@ -170,9 +170,11 @@ export default function MultiForm({
                 Check your email for a copy or you can download
               </p>
             </div>
-            <div className="w-[18.75rem] h-[37.5rem] bg-[url('./subtract.svg')] mx-auto p-5">
-              <div className="w-[16.25rem] h-[27.875rem] border border-progress-foreground rounded-[1rem]"></div>
-            </div>
+            <section className="py-8 px-[1.3125rem]">
+              <div className="w-[18.75rem] h-[37.5rem] bg-[url('./subtract.svg')] mx-auto p-5">
+                <div className="w-[16.25rem] h-[27.875rem] border border-progress-foreground rounded-[1rem] bg-dark-background"></div>
+              </div>
+            </section>
           </section>
         </>
       )}
