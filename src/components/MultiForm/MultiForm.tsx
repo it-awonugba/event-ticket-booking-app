@@ -171,7 +171,7 @@ export default function MultiForm({
               </p>
             </div>
             <section className="py-8 px-[1.3125rem]">
-              <div className="w-[18.75rem] h-[37.5rem] bg-[url('./subtract.svg')] mx-auto p-5">
+              <div className="w-[18.75rem] h-[37.5rem] mx-auto p-5 ticket">
                 <div className="w-[16.25rem] h-[27.875rem] border border-progress-foreground rounded-[1rem] bg-dark-background"></div>
               </div>
             </section>

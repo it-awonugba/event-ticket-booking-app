@@ -9,3 +9,7 @@
     rgba(10, 12, 17, 0.1);
   backdrop-filter: blur(7px);
 }
+
+.ticket {
+  background: url("./assets/subtract.svg");
+}
