@@ -12,6 +12,8 @@ import { TicketData } from "@/App";
 import ImageUploader from "../ImageUploader/ImageUploader";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
+import EnvelopeIcon from "../../assets/envelope.svg";
+import { Textarea } from "../ui/textarea";
 
 interface FormProperties {
   tickets: TicketData[];
@@ -67,7 +69,7 @@ export default function MultiForm({
                 <div className="border border-divider-background bg-section-background p-4 rounded-md">
                   <RadioGroup
                     defaultValue="1"
-                    className="grid grid-cols-1 xl:grid-cols-2 gap-6 p-0 w-full"
+                    className="grid grid-cols-1 xl:grid-cols-3 gap-6 p-0 w-full"
                   >
                     {tickets.map((ticket) => (
                       <Ticket
@@ -124,8 +126,40 @@ export default function MultiForm({
               className="rounded-[0.75rem] border border-divider-background h-12"
             />
           </section>
+          <section className="flex flex-col gap-2">
+            <Label
+              htmlFor="name"
+              className="text-base font-secondary font-normal"
+            >
+              Enter your email
+            </Label>
+            <div className="relative">
+              <Input
+                id="email"
+                type="email"
+                placeholder="hello@avioflagos.io"
+                className="rounded-[0.75rem] border border-divider-background h-12 pl-10"
+              />
+              <img
+                src={EnvelopeIcon}
+                alt="Envelope Icon"
+                className="absolute left-3 top-1/2 transform -translate-y-1/2"
+              />
+            </div>
+          </section>
+          <section className="flex flex-col gap-2">
+            <Label
+              htmlFor="name"
+              className="text-base font-secondary font-normal"
+            >
+              About the project
+            </Label>
+            <Textarea className="rounded-[0.75rem] border border-divider-background h-[7.9375rem]" />
+          </section>
         </>
       )}
+
+      {progress === 3 && <></>}
     </>
   );
 }

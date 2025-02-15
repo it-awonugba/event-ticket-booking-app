@@ -58,7 +58,13 @@ function App() {
           />
         </section>
 
-        <section className="flex flex-col gap-8 p-0 bg-layer-background xl:p-6 xl:border xl:border-ring xl:rounded-lg">
+        <section
+          className={`flex flex-col gap-8 p-0 ${
+            progress < 3
+              ? "bg-layer-background xl:p-6 xl:border xl:border-ring xl:rounded-lg"
+              : ""
+          } `}
+        >
           <MultiForm
             tickets={tickets}
             activeTicketId={activeTicketId}
@@ -66,18 +72,22 @@ function App() {
             handleTicketClick={handleTicketClick}
           />
 
-          <section className="flex flex-col flex-col-reverse justify-between gap-4 items-center xl:flex-row xl:border xl:border-ring xl:rounded-xl xl:bg-card xl:px-12 xl:h-12 ">
+          <section className="flex flex-col flex-col-reverse justify-between gap-4 items-center xl:flex-row xl:h-12 ">
             <Button
               onClick={handleCancelClick}
-              className="w-full h-full bg-transparent border border-progress-foreground rounded-xs text-progress-foreground text-base font-primary font-normal"
+              className="w-full h-full bg-transparent border border-progress-foreground rounded-xs text-progress-foreground text-base font-primary font-normal hover:text-white"
             >
-              Cancel
+              {progress === 1 && "Cancel"}
+              {progress === 2 && "Back"}
+              {progress === 3 && "Book Another Ticket"}
             </Button>
             <Button
               onClick={handleNextClick}
               className="w-full h-full bg-progress-foreground rounded-xs text-base font-primary font-normal"
             >
-              Next
+              {progress === 1 && "Next"}
+              {progress === 2 && "Get My Ticket"}
+              {progress === 3 && "Download Ticket"}
             </Button>
           </section>
         </section>

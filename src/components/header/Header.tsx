@@ -52,7 +52,7 @@ export default function Header() {
       <Button
         variant="secondary"
         size="lg"
-        className="py-3 px-4 text-base leading-5 font-normal font-primary xl:py-4 px-6"
+        className="py-3 px-4 text-base leading-5 font-normal rounded-[0.75rem] font-primary xl:py-4 px-6"
       >
         MY TICKETS <img src={ArrowRight} alt="arrow icon" />
       </Button>

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Label } from "../ui/label";
 import UploadIcon from "../../assets/upload-icon.svg";
+import { Input } from "../ui/input";
 
 export default function ImageUploader() {
   const [image, setImage] = useState<string | ArrayBuffer | null>(null);
@@ -63,7 +64,7 @@ export default function ImageUploader() {
               </p>
             </div>
           )}
-          <input
+          <Input
             type="file"
             accept="image/*"
             onChange={handleChange}

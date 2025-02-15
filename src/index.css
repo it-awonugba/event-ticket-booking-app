@@ -27,6 +27,7 @@
   --section-background: rgba(5, 34, 40, 1);
   --layer-background: rgba(8, 37, 43, 1);
   --uploader-background: rgba(0, 0, 0, 0.2);
+  --active-ticket-background: rgba(18, 70, 78, 1);
   --border: rgba(25, 118, 134, 1);
   --input: hsl(0 0% 89.8%);
   --ring: rgba(14, 70, 79, 1);
@@ -61,6 +62,7 @@
   --color-section-background: var(--section-background);
   --color-layer-background: var(--layer-background);
   --color-uploader-background: var(--uploader-background);
+  --color-active-ticket-background: var(--active-ticket-background);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);

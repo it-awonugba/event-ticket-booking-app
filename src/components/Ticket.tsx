@@ -32,29 +32,20 @@ export default function Ticket({
       />
       <Label
         htmlFor={`${title}-${id}`}
-        className={`grid grid-cols-[1fr_80px] p-2 gap-0 rounded-[0.75rem] box-border ${
-          isActive ? "bg-border" : "bg-divider-background"
+        className={`flex flex-col p-3 gap-3 rounded-[0.75rem] box-border border border-2 ${
+          isActive ? "bg-active-ticket-background" : "bg-transparent"
         }`}
         onClick={onClick}
       >
-        <span className="col-span-1 flex flex-col gap-0">
+        <span className="text-xl font-semibold font-secondary">
+          {price === 0 ? "Free" : USDFormatter.format(price).replace(".00", "")}
+        </span>
+        <span className="flex flex-col">
           <span className="text-base font-secondary font-normal truncate">
             {title.toUpperCase()}
           </span>
           <span className="font-secondary font-normal text-sm truncate">
-            {availableTickets} left!
-          </span>
-        </span>
-
-        <span
-          className={`col-span-1 p-2 box-border border border-primary rounded-xs h-fit overflow-hidden text-ellipsis whitespace-nowrap ${
-            isActive ? "bg-ring" : ""
-          }`}
-        >
-          <span className="text-xl font-semibold font-secondary p-0 text-right block">
-            {price === 0
-              ? "Free"
-              : USDFormatter.format(price).replace(".00", "")}
+            {availableTickets}/{52}
           </span>
         </span>
       </Label>
