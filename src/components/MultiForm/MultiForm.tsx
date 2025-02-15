@@ -14,6 +14,7 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import EnvelopeIcon from "../../assets/envelope.svg";
 import { Textarea } from "../ui/textarea";
+import User from "../../assets/User.png";
 
 interface FormProperties {
   tickets: TicketData[];
@@ -172,7 +173,25 @@ export default function MultiForm({
             </div>
             <section className="py-8 px-[1.3125rem]">
               <div className="w-[18.75rem] h-[37.5rem] mx-auto p-5 ticket">
-                <div className="w-[16.25rem] h-[27.875rem] border border-progress-foreground rounded-[1rem] bg-dark-background"></div>
+                <div className="flex flex-col gap-5 w-[16.25rem] h-[27.875rem] border border-progress-foreground rounded-[1rem] bg-dark-background p-[0.88rem]">
+                  <div className="text-center flex flex-col gap-1">
+                    <h3 className="font-auxilliary font-normal text-[2.125rem]">
+                      Techember Fest ”25
+                    </h3>
+                    <p className="font-secondary font-normal text-[0.625rem]">
+                      📍 04 Rumens road, Ikoyi, Lagos
+                    </p>
+                    <p className="font-secondary font-normal text-[0.625rem]">
+                      📅 March 15, 2025 | 7:00 PM
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <div className="w-[8.75rem] h-[8.75rem]">
+                      <img src={User} alt="user photo" />
+                    </div>
+                  </div>
+                  <div></div>
+                </div>
               </div>
             </section>
           </section>
