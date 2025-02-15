@@ -171,7 +171,7 @@ export default function MultiForm({
               </p>
             </div>
             <div className="w-[18.75rem] h-[37.5rem] bg-[url('./subtract.svg')] mx-auto p-5">
-              <div className="w-[16.25rem] h-[27.875rem] border border-progress-foreground"></div>
+              <div className="w-[16.25rem] h-[27.875rem] border border-progress-foreground rounded-[1rem]"></div>
             </div>
           </section>
         </>
