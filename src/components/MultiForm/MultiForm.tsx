@@ -230,6 +230,7 @@ export default function MultiForm({
                     </div>
                   </div>
                 </div>
+                <div className="mt-10">Barcode</div>
               </div>
             </section>
           </section>
