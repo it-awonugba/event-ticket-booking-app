@@ -104,7 +104,13 @@ export default function MultiForm({
 
   const handleCancelClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setProgress(1);
+    const target = e.target as HTMLElement;
+    if (target.innerHTML === "Back") {
+      setProgress(progress - 1);
+    } else {
+      setProgress(1);
+      setFormInput({});
+    }
   };
 
   const validateStepOne = (): boolean => {
@@ -216,6 +222,11 @@ export default function MultiForm({
                         />
                       ))}
                     </RadioGroup>
+                    {errors.ticketType && (
+                      <p className="text-red-500 text-sm">
+                        {errors.ticketType}
+                      </p>
+                    )}
                   </div>
                 </div>
               </section>
@@ -240,6 +251,11 @@ export default function MultiForm({
                     </SelectGroup>
                   </SelectContent>
                 </Select>
+                {errors.ticketQuantity && (
+                  <p className="text-red-500 text-sm">
+                    {errors.ticketQuantity}
+                  </p>
+                )}
               </section>
             </section>
           </>
@@ -247,6 +263,9 @@ export default function MultiForm({
         {progress === 2 && (
           <>
             <ImageUploader onImageUpload={handleImageUpload} />
+            {errors.avatar && (
+              <p className="text-red-500 text-sm">{errors.avatar}</p>
+            )}
             <section>
               <div className="border-none h-1 bg-divider-background"></div>
             </section>
@@ -263,6 +282,9 @@ export default function MultiForm({
                 className="rounded-[0.75rem] border border-divider-background h-12"
                 onChange={handleChange}
               />
+              {errors.name && (
+                <p className="text-red-500 text-sm">{errors.name}</p>
+              )}
             </section>
             <section className="flex flex-col gap-2">
               <Label
@@ -285,6 +307,9 @@ export default function MultiForm({
                   className="absolute left-3 top-1/2 transform -translate-y-1/2"
                 />
               </div>
+              {errors.email && (
+                <p className="text-red-500 text-sm">{errors.email}</p>
+              )}
             </section>
             <section className="flex flex-col gap-2">
               <Label
