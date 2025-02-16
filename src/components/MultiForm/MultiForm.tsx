@@ -239,7 +239,10 @@ export default function MultiForm({
                     </div>
                     <div className="flex items-center justify-center">
                       <div className="w-[8.75rem] h-[8.75rem]">
-                        <img src={User} alt="user photo" />
+                        <img
+                          src={!formInput.avatar ? User : formInput.avatar}
+                          alt="user photo"
+                        />
                       </div>
                     </div>
                     <div className="flex flex-col gap-0 p-1 border border-border-variant rounded-sm">
