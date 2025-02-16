@@ -190,7 +190,45 @@ export default function MultiForm({
                       <img src={User} alt="user photo" />
                     </div>
                   </div>
-                  <div></div>
+                  <div className="flex flex-col gap-0 p-1 border border-border-variant rounded-sm">
+                    <div className="grid grid-cols-2 px-2 pt-2 pb-0 gap-1 border-b border-active-ticket-background">
+                      <div className="col-span-1 border-r border-active-ticket-background p-2">
+                        <span className="font-secondary font-normal text-[0.625rem] opacity-[0.33]">
+                          Enter your name
+                        </span>
+                        <span></span>
+                      </div>
+                      <div className="col-span-1 p-2">
+                        <span className="font-secondary font-normal text-[0.625rem] opacity-[0.33]">
+                          Enter your email*
+                        </span>
+                        <span></span>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 px-2 pt-0 pb-0 gap-1 border-b border-active-ticket-background">
+                      <div className="col-span-1 border-r border-active-ticket-background p-2">
+                        <span className="font-secondary font-normal text-[0.625rem] opacity-[0.33]">
+                          Ticket Type:
+                        </span>
+                        <span></span>
+                      </div>
+                      <div className="col-span-1 p-2">
+                        <span className="font-secondary font-normal text-[0.625rem] opacity-[0.33]">
+                          Ticket For:
+                        </span>
+                        <span></span>
+                      </div>
+                    </div>
+                    <div className="p-2">
+                      <div className="font-secondary font-normal text-[0.625rem] opacity-[0.33]">
+                        Special request?
+                      </div>
+                      <div className="font-secondary font-normal text-[0.625rem]">
+                        Nil ? Or the users sad story they write in there gets
+                        this whole space, Max of three rows
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>

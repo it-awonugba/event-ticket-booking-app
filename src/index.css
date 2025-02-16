@@ -30,6 +30,7 @@
   --active-ticket-background: rgba(18, 70, 78, 1);
   --dark-background: rgba(3, 30, 33, 0.1);
   --border: rgba(25, 118, 134, 1);
+  --border-variant: rgba(19, 61, 68, 1);
   --input: hsl(0 0% 89.8%);
   --ring: rgba(14, 70, 79, 1);
   --chart-1: hsl(12 76% 61%);
@@ -66,6 +67,7 @@
   --color-active-ticket-background: var(--active-ticket-background);
   --color-dark-background: var(--dark-background);
   --color-border: var(--border);
+  --color-border-variant: var(--border-variant);
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-chart-1: var(--chart-1);
