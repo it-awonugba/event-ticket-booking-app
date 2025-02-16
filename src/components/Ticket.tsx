@@ -26,7 +26,7 @@ export default function Ticket({
   return (
     <div className="w-full max-w-full min-w-0">
       <RadioGroupItem
-        value={`${title}-${id}`}
+        value={`${id}`}
         id={`${title}-${id}`}
         className="hidden"
       />
