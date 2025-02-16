@@ -34,6 +34,8 @@ type FormInputType = {
   ticketQuantity?: string;
 };
 
+const LOCAL_STORAGE_KEY = "multiFormInput";
+
 export default function MultiForm({
   tickets,
   progress,
@@ -58,6 +60,19 @@ export default function MultiForm({
       });
     }
   }, [progress, formInput]);
+
+  useEffect(() => {
+    const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (savedData) {
+      setFormInput(JSON.parse(savedData));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (Object.keys(formInput).length > 0) {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(formInput));
+    }
+  }, [formInput]);
 
   const printFunction = useReactToPrint({ contentRef });
 
@@ -263,7 +278,7 @@ export default function MultiForm({
         {progress === 2 && (
           <>
             <ImageUploader onImageUpload={handleImageUpload} />
-            {errors.avatar && (
+            {!errors.avatar && (
               <p className="text-red-500 text-sm">{errors.avatar}</p>
             )}
             <section>
@@ -408,7 +423,7 @@ export default function MultiForm({
                       </div>
                     </div>
                   </div>
-                  <div className="mt-10">
+                  <div className="mt-10 text-center">
                     <svg ref={barcodeRef}></svg>
                   </div>
                 </div>
