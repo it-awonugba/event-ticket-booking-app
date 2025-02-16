@@ -22,10 +22,17 @@ interface FormProperties {
   tickets: TicketData[];
   progress: number;
   printContentRef: React.RefObject<HTMLElement | null>;
-
   handleNextClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   handleCancelClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
+
+type FormInputType = {
+  name?: string;
+  email?: string;
+  avatar?: string;
+  ticketType?: string;
+  ticketQuantity?: string;
+};
 
 export default function MultiForm({
   tickets,
@@ -34,14 +41,14 @@ export default function MultiForm({
   handleNextClick,
   handleCancelClick,
 }: FormProperties) {
-  const [formInput, setFormInput] = useState({});
+  const [formInput, setFormInput] = useState<FormInputType>({});
   const [activeTicketId, setActiveTicketId] = useState<number>(1);
 
   const handleTicketSelect = (ticketId: number) => {
     setActiveTicketId(ticketId);
     setFormInput((prev) => ({
       ...prev,
-      ticketType: tickets[ticketId].title.toUpperCase(),
+      ticketType: tickets[ticketId - 1].title.toUpperCase(),
     }));
   };
 
@@ -56,7 +63,10 @@ export default function MultiForm({
     setFormInput((prev) => ({ ...prev, ticketQuantity: value }));
   };
 
-  console.log(formInput);
+  const handleImageUpload = (url: string) => {
+    setFormInput((prev) => ({ ...prev, avatar: url }));
+  };
+
   return (
     <form>
       <section
@@ -112,6 +122,7 @@ export default function MultiForm({
                           {...ticket}
                           isActive={ticket.id === activeTicketId}
                           onClick={() => handleTicketSelect(ticket.id)}
+                          key={ticket.id}
                         />
                       ))}
                     </RadioGroup>
@@ -145,7 +156,7 @@ export default function MultiForm({
         )}
         {progress === 2 && (
           <>
-            <ImageUploader />
+            <ImageUploader onImageUpload={handleImageUpload} />
             <section>
               <div className="border-none h-1 bg-divider-background"></div>
             </section>
