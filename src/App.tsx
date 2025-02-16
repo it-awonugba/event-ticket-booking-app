@@ -1,9 +1,8 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import "./App.css";
 import Header from "./components/header/Header";
 import { Progress } from "./components/ui/progress";
 import MultiForm from "./components/MultiForm/MultiForm";
-import { useReactToPrint } from "react-to-print";
 
 export interface TicketData {
   id: number;
@@ -15,9 +14,6 @@ export interface TicketData {
 
 function App() {
   const [progress, setProgress] = useState<number>(1);
-
-  const contentRef = useRef<HTMLFormElement>(null);
-  const printFunction = useReactToPrint({ contentRef });
   const formTitles = ["Ticket Selection", "Attendee Details", "Ready"];
   const tickets: TicketData[] = [
     {
@@ -43,28 +39,6 @@ function App() {
     },
   ];
 
-  const incrementProgress = () => {
-    if (progress < tickets.length) {
-      setProgress(progress + 1);
-    }
-  };
-
-  const handleNextClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    const target = e.target as HTMLElement;
-
-    if (target.innerHTML === "Download Ticket") {
-      printFunction();
-    } else {
-      incrementProgress();
-    }
-  };
-
-  const handleCancelClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setProgress(1);
-  };
-
   return (
     <main className="flex flex-col w-screen py-3 px-5 gap-y-5 overflow-hidden xl:gap-y-12">
       <Header />
@@ -87,9 +61,7 @@ function App() {
         <MultiForm
           tickets={tickets}
           progress={progress}
-          printContentRef={contentRef}
-          handleNextClick={handleNextClick}
-          handleCancelClick={handleCancelClick}
+          setProgress={setProgress}
         />
       </section>
     </main>

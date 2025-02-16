@@ -11,19 +11,19 @@ import {
 import { TicketData } from "@/App";
 import ImageUploader from "../ImageUploader/ImageUploader";
 import { Label } from "../ui/label";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { Input } from "../ui/input";
 import EnvelopeIcon from "../../assets/envelope.svg";
 import { Textarea } from "../ui/textarea";
 import User from "../../assets/User.png";
 import { Button } from "../ui/button";
+import JsBarcode from "jsbarcode";
+import { useReactToPrint } from "react-to-print";
 
-interface FormProperties {
+interface MultiFormProperties {
   tickets: TicketData[];
   progress: number;
-  printContentRef: React.RefObject<HTMLElement | null>;
-  handleNextClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  handleCancelClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  setProgress: Dispatch<SetStateAction<number>>;
 }
 
 type FormInputType = {
@@ -37,12 +37,29 @@ type FormInputType = {
 export default function MultiForm({
   tickets,
   progress,
-  printContentRef,
-  handleNextClick,
-  handleCancelClick,
-}: FormProperties) {
+  setProgress,
+}: MultiFormProperties) {
   const [formInput, setFormInput] = useState<FormInputType>({});
   const [activeTicketId, setActiveTicketId] = useState<number>(1);
+  const contentRef = useRef<HTMLFormElement>(null);
+  const barcodeRef = useRef(null);
+  const [errors, setErrors] = useState<FormInputType>({});
+
+  useEffect(() => {
+    if (progress === 3 && barcodeRef.current) {
+      const barcodeData = `${formInput.ticketType || ""}`;
+      JsBarcode(barcodeRef.current, barcodeData, {
+        format: "CODE128",
+        lineColor: "#000",
+        width: 1.5,
+        height: 40,
+        displayValue: false,
+        margin: 5,
+      });
+    }
+  }, [progress, formInput]);
+
+  const printFunction = useReactToPrint({ contentRef });
 
   const handleTicketSelect = (ticketId: number) => {
     setActiveTicketId(ticketId);
@@ -65,6 +82,79 @@ export default function MultiForm({
 
   const handleImageUpload = (url: string) => {
     setFormInput((prev) => ({ ...prev, avatar: url }));
+  };
+
+  const handleNextClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const target = e.target as HTMLElement;
+
+    if (target.innerHTML === "Download Ticket") {
+      printFunction();
+    } else {
+      if (progress < tickets.length) {
+        if (
+          (progress === 1 && validateStepOne()) ||
+          (progress === 2 && validateStepTwo())
+        ) {
+          setProgress(progress + 1);
+        }
+      }
+    }
+  };
+
+  const handleCancelClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setProgress(1);
+  };
+
+  const validateStepOne = (): boolean => {
+    let isValid = true;
+    const newErrors: FormInputType = {};
+
+    if (!formInput.ticketType) {
+      newErrors.ticketType = "Please select a ticket type.";
+      isValid = false;
+    }
+
+    if (
+      !formInput.ticketQuantity ||
+      !/^[1-5]$/.test(formInput.ticketQuantity)
+    ) {
+      newErrors.ticketQuantity = "Select a valid ticket quantity (1-5).";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
+  const validateStepTwo = (): boolean => {
+    let isValid = true;
+    const newErrors: FormInputType = {};
+
+    if (!formInput.name || formInput.name.trim().length < 2) {
+      newErrors.name = "Name must be at least 2 characters long.";
+      isValid = false;
+    }
+
+    if (
+      !formInput.email ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formInput.email)
+    ) {
+      newErrors.email = "Enter a valid email address.";
+      isValid = false;
+    }
+
+    if (
+      formInput.avatar &&
+      !/^https?:\/\/[^\s$.?#].[^\s]*$/.test(formInput.avatar)
+    ) {
+      newErrors.avatar = "Enter a valid image URL.";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
   };
 
   return (
@@ -214,7 +304,7 @@ export default function MultiForm({
 
         {progress === 3 && (
           <>
-            <section className="flex flex-col gap-8" ref={printContentRef}>
+            <section className="flex flex-col gap-8" ref={contentRef}>
               <div className="text-center flex flex-col gap-4">
                 <h1 className="font-ticket font-normal text-[2rem]">
                   Your Ticket is Booked!
@@ -293,7 +383,9 @@ export default function MultiForm({
                       </div>
                     </div>
                   </div>
-                  <div className="mt-10">Barcode</div>
+                  <div className="mt-10">
+                    <svg ref={barcodeRef}></svg>
+                  </div>
                 </div>
               </section>
             </section>
