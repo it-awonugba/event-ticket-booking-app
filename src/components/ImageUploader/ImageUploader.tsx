@@ -83,14 +83,16 @@ export default function ImageUploader({ onImageUpload }: ImageUploaderProps) {
   };
 
   return (
-    <section className="flex flex-col gap-4 p-6 bg-card border border-progress-background bg-section-background rounded-md xl:pb-12">
+    <section className="flex flex-col gap-4 p-6 bg-card border border-progress-background bg-section-background rounded-md md:pb-12">
       <Label className="text-base font-secondary font-normal">
         Upload Profile Photo
       </Label>
-      <div className="bg-transparent w-full xl:bg-uploader-background xl:h-50">
-        <div className="xl:relative">
+      <div className="bg-transparent w-full md:bg-uploader-background md:h-50">
+        <div className="md:relative">
           <div
-            className="xl:absolute inset-0 w-full flex flex-col justify-center mx-auto p-6 border-4 rounded-lg bg-progress-background/50 h-60 xl:w-60 -top-5 cursor-pointer"
+            className={`inset-0 w-full flex flex-col justify-center mx-auto  border-4 rounded-lg bg-progress-background/50 h-60 -top-5 cursor-pointer overflow-hidden md:w-60 md:absolute ${
+              !image && "p-6"
+            }`}
             onDrop={handleDrop}
             onDragOver={handleDragOver}
             onClick={triggerImageUploader}

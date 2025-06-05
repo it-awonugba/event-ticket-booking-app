@@ -5,57 +5,66 @@ import { NavLink } from "react-router";
 
 export default function Header() {
   return (
-    <header className="bg-[rgba(5,37,44,0.40)] flex items-center justify-between backdrop-blur-sm w-[20rem] border rounded-[0.75rem] py-3 px-4 fixed z-50 xl:w-[75rem] xl:mx-auto left-1/2 transform -translate-x-1/2">
-      <NavLink to="/">
-        <img src={logo} alt="logo" />
-      </NavLink>
-      <nav role="navigation" className="hidden xl:flex">
-        <ul className="flex justify-between gap-x-4">
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-foreground font-primary"
-                  : "text-muted-foreground font-primary"
-              }
-            >
-              Events
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/tickets"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-foreground font-primary"
-                  : "text-muted-foreground font-primary"
-              }
-            >
-              My Tickets
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/projects"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-foreground font-primary"
-                  : "text-muted-foreground font-primary"
-              }
-            >
-              About Project
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
-      <Button
-        variant="secondary"
-        size="lg"
-        className="py-3 px-4 text-base leading-5 font-normal rounded-[0.75rem] font-primary xl:py-4 px-6"
-      >
-        MY TICKETS <img src={ArrowRight} alt="arrow icon" />
-      </Button>
+    <header className="fixed inset-x-0 top-2 z-50 w-full backdrop-blur-sm px-4">
+      <div className="mx-auto flex max-w-screen-xl items-center justify-between gap-4 px-4 py-3  border bg-[rgba(5,37,44,0.40)] rounded-[0.75rem]  sm:px-6 md:px-8 lg:px-10">
+        <NavLink to="/" className="shrink-0">
+          <img src={logo} alt="logo" className="h-8 w-auto sm:h-10" />
+        </NavLink>
+
+        <nav role="navigation" className="hidden md:flex">
+          <ul className="flex items-center gap-4 md:gap-6">
+            <li>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `font-primary ${
+                    isActive ? "text-foreground" : "text-muted-foreground"
+                  }`
+                }
+              >
+                Events
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/tickets"
+                className={({ isActive }) =>
+                  `font-primary ${
+                    isActive ? "text-foreground" : "text-muted-foreground"
+                  }`
+                }
+              >
+                My Tickets
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/projects"
+                className={({ isActive }) =>
+                  `font-primary ${
+                    isActive ? "text-foreground" : "text-muted-foreground"
+                  }`
+                }
+              >
+                About Project
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+
+        <Button
+          variant="secondary"
+          size="lg"
+          className="flex items-center gap-2 whitespace-nowrap rounded-[0.75rem] py-2 px-3 text-sm leading-5 font-normal font-primary sm:py-3 sm:px-4 sm:text-base md:py-4 md:px-6"
+        >
+          MY TICKETS
+          <img
+            src={ArrowRight}
+            alt="arrow icon"
+            className="h-4 w-4 sm:h-5 sm:w-5"
+          />
+        </Button>
+      </div>
     </header>
   );
 }

@@ -189,28 +189,30 @@ export default function MultiForm({
       >
         {progress === 1 && (
           <>
-            <section className="flex flex-col h-[15.1875rem] items-center justify-between space-y-2 py-4 px-6  border border-ring rounded-md description-card xl:py-6 xl:px-6 xl:h-fit">
+            <section className="flex flex-col items-center justify-between h-auto space-y-4 py-4 px-4 sm:px-6 sm:py-6 border border-ring rounded-md description-card">
               <div className="w-full xl:w-2/3">
-                <h1 className="font-auxilliary p-0 text-5xl text-center xl:text-[3.875rem]">
-                  Techember Fest ”25
+                <h1 className="font-auxilliary text-4xl sm:text-5xl lg:text-[3.875rem] text-center p-0">
+                  Techember Fest ’25
                 </h1>
-                <p className="text-base text-center font-secondary font-normal">
+                <p className="mt-2 text-sm sm:text-base text-center font-secondary font-normal">
                   Join us for an unforgettable experience at [Event Name]!
                   Secure your spot now.
                 </p>
               </div>
-              <div className="flex flex-col justify-between  xl:flex-row xl:gap-4">
-                <span className="text-base font-secondary font-normal">
+
+              <div className="flex flex-col items-center justify-between space-y-1 md:flex-row md:space-y-0 md:gap-4">
+                <span className="text-sm sm:text-base font-secondary font-normal">
                   📍 [Event Location]
                 </span>
-                <span className="text-base font-secondary font-normal hidden xl:flex">
+                <span className="hidden lg:inline-block text-base font-secondary">
                   | |
                 </span>
-                <span className="text-base font-secondary font-normal">
+                <span className="text-sm sm:text-base font-secondary font-normal">
                   March 15, 2025 | 7:00 PM
                 </span>
               </div>
             </section>
+
             {/* Horizontal rule */}
             <section>
               <div className="border-none h-1 bg-divider-background"></div>
@@ -226,7 +228,7 @@ export default function MultiForm({
                   <div className="border border-divider-background bg-section-background p-4 rounded-md">
                     <RadioGroup
                       defaultValue="1"
-                      className="grid grid-cols-1 xl:grid-cols-3 p-0 w-full"
+                      className="grid grid-cols-1 lg:grid-cols-3 p-0 w-full"
                     >
                       {tickets.map((ticket) => (
                         <Ticket
@@ -399,7 +401,7 @@ export default function MultiForm({
                           <span className="font-secondary font-normal text-[0.625rem] opacity-[0.33]">
                             Ticket Type:
                           </span>
-                          <span className="font-secondary font-normal font-bold text-[0.75rem]">
+                          <span className="font-secondary font-normal font-bold text-[0.75rem] truncate">
                             {formInput.ticketType}
                           </span>
                         </div>
@@ -416,14 +418,14 @@ export default function MultiForm({
                         <div className="font-secondary font-normal text-[0.625rem] opacity-[0.33]">
                           Special request?
                         </div>
-                        <div className="font-secondary font-normal text-[0.625rem]">
+                        <div className="font-secondary font-normal text-[0.525rem]">
                           Nil ? Or the users sad story they write in there gets
                           this whole space, Max of three rows
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="mt-10 text-center">
+                  <div className="mt-12 text-center overflow-hidden">
                     <svg ref={barcodeRef}></svg>
                   </div>
                 </div>
@@ -432,7 +434,7 @@ export default function MultiForm({
           </>
         )}
 
-        <section className="flex flex-col flex-col-reverse justify-between gap-4 items-center xl:flex-row xl:h-12 ">
+        <section className="flex flex-col flex-col-reverse justify-between gap-4 items-center lg:flex-row lg:h-12 ">
           <Button
             onClick={handleCancelClick}
             className="w-full h-full bg-transparent border border-progress-foreground rounded-xs text-progress-foreground text-base font-primary font-normal hover:text-white"

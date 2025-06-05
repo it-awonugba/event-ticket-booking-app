@@ -40,7 +40,7 @@ function App() {
   ];
 
   return (
-    <main className="flex flex-col w-screen py-3 px-5 gap-y-5 overflow-hidden xl:gap-y-12">
+    <main className="flex flex-col w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-4 gap-y-4 sm:gap-y-6 xl:gap-y-12 overflow-hidden">
       <Header />
       <section className="flex flex-col w-full p-6 rounded-xl mx-auto mt-28 bg-layer-background border border-ring gap-8 xl:p-12 xl:w-[43.75rem] xl:bg-card xl:p-12">
         <section className="flex flex-col gap-y-3">
